@@ -1,0 +1,564 @@
+/* ==========================================================
+   1. GLOBAL VARIABLES & PREMIUM BASE STYLES
+   ========================================================== */
+:root {
+    --bg-dark: #0a192f;         /* Deep ocean navy background */
+    --bg-card: rgba(23, 42, 69, 0.75); /* Glassmorphism card navy */
+    --bg-header: #020c1b;       /* Deepest navy for header/footer */
+    --bg-input: #030e1e;        /* Dark contrast background for inputs */
+    --accent-gold: #d4af37;     /* Metallic gold for borders & highlights */
+    --accent-cyan: #64ffda;     /* Seafoam cyan for glowing accents */
+    --text-light: #e6f1ff;      /* Bright main text color */
+    --text-muted: #8892b0;      /* Muted subtext color */
+}
+
+/* Reset margins and smooth scrolling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for page anchor links */
+}
+
+body {
+    background: radial-gradient(circle at top, #112240 0%, #0a192f 100%);
+    background-attachment: fixed;
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1050px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* Page Headings with Dual Accent Underline */
+.page-heading {
+    color: var(--accent-gold);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 1.9rem;
+    letter-spacing: 1.5px;
+    position: relative;
+}
+
+.page-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background-color: var(--accent-cyan);
+}
+
+.intro-text {
+    margin-bottom: 25px;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+/* ==========================================================
+   2. HEADER, FOOTER & DROPDOWN NAVIGATION
+   ========================================================== */
+header {
+    background-color: rgba(2, 12, 27, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-gold);
+    text-align: center;
+    padding: 25px 15px 15px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    color: var(--accent-gold);
+    font-size: 2.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+header .subtitle {
+    color: var(--accent-cyan);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-cyan);
+    background-color: rgba(100, 255, 218, 0.08);
+    border-bottom: 2px solid var(--accent-cyan);
+}
+
+/* Dropdown Sub-menu Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0d1b2a;
+    min-width: 230px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    border: 1px solid var(--accent-gold);
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+}
+
+.dropdown-content li {
+    display: block;
+    width: 100%;
+}
+
+.dropdown-content li a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--text-light);
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: left;
+}
+
+.dropdown-content li a:hover {
+    background-color: #172a45;
+    color: var(--accent-cyan);
+    padding-left: 22px; /* Subtle slide-right effect on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--bg-header);
+    border-top: 1px solid var(--accent-gold);
+    text-align: center;
+    padding: 25px 10px;
+    margin-top: 60px;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+footer strong {
+    color: var(--accent-cyan);
+}
+
+/* ==========================================================
+   3. PAGE 1: HOME PAGE STYLES (index.html)
+   ========================================================== */
+.hero-section {
+    background: linear-gradient(145deg, rgba(23, 42, 69, 0.9), rgba(10, 25, 47, 0.9));
+    border: 1px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--accent-cyan);
+    margin-bottom: 22px;
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+.hero-section h2 {
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    padding: 22px;
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15);
+}
+
+.feature-card h3 {
+    color: var(--accent-gold);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    align-self: flex-start;
+    background-color: transparent;
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    padding: 9px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: var(--accent-cyan);
+    color: #020c1b;
+    box-shadow: 0 0 12px rgba(100, 255, 218, 0.4);
+}
+
+/* ==========================================================
+   4. PAGE 2: ENGINEERING STYLES (engineering.html)
+   ========================================================== */
+.info-block {
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.info-block:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-gold);
+}
+
+.info-block h3 {
+    color: var(--accent-gold);
+    font-size: 1.45rem;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+    padding-bottom: 8px;
+}
+
+.info-block ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.info-block li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    color: var(--text-light);
+    font-size: 0.98rem;
+}
+
+.info-block li::before {
+    content: "►";
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    top: 2px;
+}
+
+.info-block li strong {
+    color: var(--accent-cyan);
+}
+
+/* Anchor Target Highlight when coming from dropdown */
+.info-block:target {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 25px rgba(100, 255, 218, 0.35);
+}
+
+.external-box {
+    background-color: var(--bg-input);
+    border-left: 4px solid var(--accent-cyan);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-top: 35px;
+}
+
+.external-box a {
+    color: var(--accent-cyan);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.external-box a:hover {
+    color: var(--accent-gold);
+}
+
+/* ==========================================================
+   5. PAGE 3: ARTIFACT MATRIX STYLES (data.html)
+   ========================================================== */
+.table-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
+    margin-bottom: 35px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-header);
+    color: var(--accent-gold);
+    padding: 15px 18px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+td {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+tr:hover {
+    background-color: rgba(100, 255, 218, 0.08);
+    transition: background-color 0.2s ease;
+}
+
+/* ==========================================================
+   6. PAGE 4: VISUAL GALLERY STYLES (gallery.html)
+   ========================================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.gallery-card {
+    background: linear-gradient(145deg, #172a45, #0d1b2a);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 12px 25px rgba(100, 255, 218, 0.25);
+}
+
+.gallery-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 210px;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.gallery-card .caption {
+    padding: 14px 15px;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    text-align: center;
+    font-weight: 600;
+    background-color: #0b192c;
+    border-top: 2px solid var(--accent-gold);
+}
+
+/* ==========================================================
+   7. PAGE 5: FORM & POLL STYLES (contact.html)
+   ========================================================== */
+.project-form {
+    background: linear-gradient(145deg, #172a45, #0a192f);
+    border: 1px solid var(--accent-gold);
+    padding: 35px;
+    border-radius: 12px;
+    max-width: 650px;
+    margin: 30px auto 50px auto;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.project-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan));
+    border-radius: 12px 12px 0 0;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--bg-input);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    color: var(--text-light);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.35);
+    background-color: #05152e;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background-color: var(--bg-input);
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.radio-group label {
+    color: var(--text-light);
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: var(--accent-cyan);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--accent-gold), #b89228);
+    color: #020c1b;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.submit-btn:hover {
+    background: var(--accent-cyan);
+    color: #020c1b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+}
